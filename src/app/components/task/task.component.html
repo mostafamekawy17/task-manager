@@ -1,0 +1,24 @@
+<h2>Edit Task</h2>
+
+<div *ngIf="!taskId" >
+  <p class="alert alert-danger">Error</p>
+</div>
+
+<div *ngIf="taskId">
+  <form #f="ngForm" >
+    <input class="form-control" type="text" ngModel name="title" required minlength="4">
+    <p *ngIf="f.touched && !f.valid" class="alert alert-danger">Title is required and should be more than 3 letters </p>
+    <div class="pt-4">
+      <textarea class="form-control" ngModel rows="7" name="description"></textarea>
+    </div>
+    <div class="pt-4">
+      <button [disabled]="!f.valid" type="submit" class="btn btn-primary m-2" (click)="onUpdate(f)">Save</button>
+      <button class="btn btn-danger m-2" routerLink="/" (click)="onDelete()">Delete</button>
+      <button class="btn btn-danger" routerLink="/">Cancel</button>
+    </div>
+  </form>
+</div>
+
+
+
+

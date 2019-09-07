@@ -1,0 +1,14 @@
+<h2>Add New Task</h2>
+
+
+<form #f="ngForm" >
+  <input class="form-control" type="text" placeholder="Task Title" ngModel name="title" required minlength="4">
+  <p *ngIf="f.touched && !f.valid" class="alert alert-danger">Title is required and should be more than 3 letters </p>
+  <div class="pt-4">
+    <textarea class="form-control" rows="7" placeholder="Task Description" ngModel name="description"></textarea>
+  </div>
+  <div class="pt-4">
+    <button [disabled]="!f.valid" class="btn btn-primary m-2" (click)="onSave(f)">Save</button>
+    <button class="btn btn-danger" (click)="onCancel(f)">Cancel</button>
+  </div>
+</form>
